@@ -14,10 +14,10 @@ int main(void){
   
   
   while(1){
-    LED_On(SW1_Input());
-    delay(1*ns2S);
-    LED_Off(5);
-    delay(1*ns2S);
+//    LED_On(SW1_Input());
+//    delay(1*ns2S);
+//    LED_Off(5);
+//    delay(1*ns2S);
   }
 
 
