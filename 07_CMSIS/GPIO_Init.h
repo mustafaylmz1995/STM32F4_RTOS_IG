@@ -19,19 +19,6 @@ extern "C" {
 typedef unsigned int uint32_t;
 
 
-typedef enum{
-  greenLED  = 12,
-  orangeLED = 13,
-  redLED    = 14,
-  blueLED   = 15,
-  all       = 16,
-  none      = 0
-  
-}LEDs;
-
-
-
-
 #define LED1        (1U<<12)	//PD12  greenLED
 #define LED2        (1U<<13)	//PD13  orangeLED
 #define LED3        (1U<<14)	//PD14  redLED
@@ -51,9 +38,8 @@ typedef enum{
 
 void GPIO_Init(void);
 
-void LED_On(LEDs L);
-void LED_Off(LEDs L);
-void Blink(uint32_t L);
+void LED_On(uint8_t L);
+void LED_Off(uint8_t L);
 
 
 uint32_t SW1_Input(void);
