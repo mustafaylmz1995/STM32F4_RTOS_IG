@@ -26,7 +26,7 @@ STM32F4_RTOS_IG/
 ├── 01_CubeMXUsage/          # STM32CubeMX initialization
 ├── 02_CMX_ButtonUsage/      # GPIO button input with HAL
 ├── 03_CMX_ButtonIRQ/        # GPIO interrupt handling
-├── 04_KernelInternal/       # RTOS Kernel — Part 1
+├── 04_KernelInternal/       # RTOS Kernel — Part 1 (5-part series!)
 ├── 04_KernelInternal_2/     # RTOS Kernel — Part 2
 ├── 04_KernelInternal_3/     # RTOS Kernel — Part 3
 ├── 04_KernelInternal_4/     # RTOS Kernel — Part 4
@@ -42,17 +42,49 @@ STM32F4_RTOS_IG/
 
 ---
 
-## 🧠 Kernel Internals (5-Part Series)
+## 🧠 RTOS Kernel Internals — 5-Part Series
 
-The core of this project is the **5-part Kernel Internal series**, covering:
+The core of this project is a **custom RTOS kernel** built from zero. Here's what each part covers:
 
-| Part | Topics |
-|:----:|:-------|
-| **1** | Task control block, context switching basics |
-| **2** | Scheduler implementation, task states |
-| **3** | Stack management, PendSV handler |
-| **4** | Mutex, semaphore, synchronization primitives |
-| **5** | Inter-task communication, queues |
+| Part | Topics | Key Functions |
+|:----:|:-------|:--------------|
+| **1** | **Task Control Block** — task creation, stack initialization, TCB structure | `TCB_Type`, `xTaskCreateStatic()`, `prvInitialiseNewTask()` |
+| **2** | **Context Switching** — PendSV handler, stack frame manipulation, PSP usage | `xPortPendSVHandler()`, `vPortSVCHandler()`, `portSAVE_CONTEXT()` |
+| **3** | **Scheduler** — Round-robin, priority-based scheduling, idle task | `vTaskSwitchContext()`, `prvIdleTask()`, `taskYIELD()` |
+| **4** | **Synchronization** — Mutex, binary semaphore, counting semaphore, priority inheritance | `xSemaphoreCreateMutex()`, `xSemaphoreGive/Take()`, `prvInheritPriority()` |
+| **5** | **Inter-Task Communication** — Message queues, critical sections, suspend/resume | `xQueueCreate()`, `xQueueSend/Receive()`, `taskENTER_CRITICAL()` |
+
+---
+
+## 📚 Detailed Lesson Contents
+
+### Phase 1: Toolchain & Board Setup (Lessons 00–01)
+| Lesson | Topic | Concepts |
+|:-------|:------|:---------|
+| **00** | CompilerSettings | ARM GCC toolchain, linker script, startup file configuration |
+| **01** | CubeMXUsage | STM32CubeMX project generation, clock config, peripheral setup |
+
+### Phase 2: GPIO & Interrupts (Lessons 02–03)
+| Lesson | Topic | Concepts |
+|:-------|:------|:---------|
+| **02** | CMX_ButtonUsage | GPIO input with HAL, button reading, debounce |
+| **03** | CMX_ButtonIRQ | External interrupt (EXTI), NVIC configuration, ISR |
+
+### Phase 3: RTOS Kernel (Lessons 04–04_5)
+| Lesson | Topic | Concepts |
+|:-------|:------|:---------|
+| **04_1** | KernelInternal — Part 1 | Task creation, TCB, stack initialization |
+| **04_2** | KernelInternal — Part 2 | Context switch, PendSV, SVC exceptions |
+| **04_3** | KernelInternal — Part 3 | Scheduler implementation, task states |
+| **04_4** | KernelInternal — Part 4 | Mutex, semaphore, synchronization primitives |
+| **04_5** | KernelInternal — Part 5 | Message queues, inter-task communication |
+
+### Phase 4: Low-Level & CMSIS (Lessons 05–07)
+| Lesson | Topic | Concepts |
+|:-------|:------|:---------|
+| **05** | LED_Assem | Assembly LED control, direct register manipulation |
+| **06** | Counting | Task counting example, timing with SysTick |
+| **07** | CMSIS + SVC | ARM CMSIS-Core for RTOS, Supervisor Call exception handling |
 
 ---
 
@@ -84,7 +116,7 @@ The core of this project is the **5-part Kernel Internal series**, covering:
 
 ## 📄 License
 
-MIT License — see [LICENSE](LICENSE).
+MIT License.
 
 ---
 
